@@ -5,168 +5,294 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roja Eswaran Personal Website</title>
     <style>
+        :root {
+            --ink: #1f2937;
+            --muted: #5b6675;
+            --accent: #1f4e79;
+            --accent-light: #eaf1f8;
+            --border: #e3e7ee;
+            --bg: #eef1f5;
+            --card: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-.container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px 20px 20px 220px; /* left padding pushes text right */
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-        .image-container {
-            position: absolute; /* Position the image absolutely within the container */
-            top: 0; /* Distance from the top */
-            left: 0; /* Distance from the left */
-            width: 360px; /* Adjust the maximum width of the image */
-            height: 360px;
-        }
-        
-        .image-container-right {
-            position: absolute; /* Position the image absolutely within the container */
-            top: 10px; /* Distance from the top */
-            right: 10px; /* Distance from the left */
+            padding: 40px 20px 60px;
+            background: linear-gradient(180deg, #f4f6f9 0%, #eef1f5 100%);
+            color: var(--ink);
+            line-height: 1.55;
         }
 
-        .image-container-bottom {
-            position: absolute; /* Position the image absolutely within the container */
-            bottom: 10px; /* Distance from the top */
-            right: 10px; /* Distance from the left */
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
         }
-        
-        img {
-            max-width: 250px; /* Adjust the maximum width of the image */
-            height: 150px;
-            
+
+        h1, h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 700;
+            margin: 0;
         }
-          .publication a {
+
+        h1 { font-size: 2rem; color: var(--ink); }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        h3 {
+            margin: 6px 0 14px;
+            font-weight: 500;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        a {
+            color: var(--accent);
             text-decoration: none;
-            color: #007bff;
         }
-.circle-frame {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    overflow: hidden;
-    position: absolute;
-    top: 10px;     /* Move down slightly from container top */
-    left: 10px;    /* Move slightly from container left */
-    border: 4px solid #000;
-}
 
-.circle-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        a:hover { text-decoration: underline; }
+
+        .card {
+            background: var(--card);
+            border-radius: 14px;
+            box-shadow: 0 2px 14px rgba(20, 30, 50, 0.07);
+            padding: 28px 30px;
+            margin-bottom: 22px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .circle-frame {
+            width: 130px;
+            height: 130px;
+            min-width: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .circle-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: background 0.15s ease, transform 0.15s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .logo-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 16px;
+            max-width: 460px;
+        }
+
+        .logo-row img {
+            max-width: 130px;
+            height: 72px;
+            object-fit: contain;
+            filter: grayscale(15%);
+            transition: filter 0.15s ease, transform 0.15s ease;
+        }
+
+        .logo-row img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.04);
+        }
+
+        /* Lists */
+        ol {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+            counter-reset: item;
+        }
+
+        ol li {
+            counter-increment: item;
+            position: relative;
+            padding: 10px 0 10px 34px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.97rem;
+            color: var(--ink);
+        }
+
+        ol li:last-child { border-bottom: none; }
+
+        ol li::before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        cite {
+            font-style: normal;
+        }
+
+        cite a {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 20px 14px 40px; }
+            .card { padding: 20px; }
+            .header { flex-direction: column; }
+            .logo-row { justify-content: flex-start; max-width: 100%; }
+        }
     </style>
 </head>
 <body>
-    
-    <div class="container">
-  	<div class="circle-frame">
-        <img src="roja.jpg" alt="Image">
+    <div class="page">
+
+        <div class="card header">
+            <div class="header-main">
+                <div class="circle-frame">
+                    <img src="roja.jpg" alt="Roja Eswaran">
+                </div>
+                <div>
+                    <h1>Roja Eswaran, PhD</h1>
+                    <h3>Senior Engineer at GEICO</h3>
+                    <div class="nav-links">
+                        <a href="https://www.linkedin.com/in/roja-eswaran">LinkedIn</a>
+                        <a href="https://github.com/RojaEswaran">GitHub</a>
+                        <a href="https://scholar.google.com/citations?user=R8hR8fcAAAAJ&hl=en&oi=ao">Google Scholar</a>
+                        <a href="https://medium.com/@roja-eswaran">Medium</a>
+                        <a href="Resume_RojaEswaran.pdf">Resume</a>
+                        <a href="CV-RojaEswaran.pdf">CV</a>
+                    </div>
+                </div>
+            </div>
+            <div class="logo-row">
+                <img src="bearcat.png" alt="Binghamton Bearcats">
+                <img src="geico.svg" alt="GEICO">
+                <img src="zededa.jpg" alt="ZEDEDA">
+                <img src="argonne.png" alt="Argonne National Laboratory">
+                <img src="itri.png" alt="ITRI Taiwan">
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Technical Program Committee</h2>
+            <ol class="reviewers">
+                <li>
+                    Internet of Things and Cloud Computing Journal <cite><a href="http://www.iotccjournal.org/reviewers">[Reviewer]</a></cite>
+                </li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>Publications / Technical Talks</h2>
+            <ol class="publication">
+                <li>
+                    Roja Eswaran <i><b>Three advantages: Why edge computing demands a different developer mindset</b></i>, In the All Things Open (ATO '25). Raleigh, North Carolina, October 12 2025 <cite><a href="https://www.youtube.com/watch?v=BmVgG8KScGU">[Podcast Reference]</a> <a href="https://allthingsopen.org/articles/edge-computing-ai-systems-programming">[Article]</a></cite>
+                </li>
+                <li>
+                    Roja Eswaran <i><b>Performance vs Security Tradeoff in Containers</b></i>, In the All Things Open (ATO '25). Raleigh, North Carolina, October 13 2025 <cite><a href="https://2025.allthingsopen.org/sessions/a-tug-of-war-performance-vs-security-tradeoff-in-containers">[Talk Reference]</a> <a href="https://2025.allthingsopen.org/speakers/roja-eswaran-phd">[Conference]</a></cite>
+                </li>
+                <li>
+                    Roja Eswaran, Mingjie Yan, Kartik Gopalan <i><b>Template-aware Live Migration of Virtual Machines</b></i>, In The Eighth ACM/IEEE Symposium on Edge Computing (SEC '23) EdgeComm. Delaware, December 2023 <cite><a href="TLM.pdf">[paper]</a> <a href="edgecomm23.bib">[bibtex]</a></cite>
+                </li>
+                <li>
+                    Roja Eswaran, Mingjie Yan, Kartik Gopalan <i><b>Tackling Memory Footprint Expansion During Live Migration of Virtual Machines</b></i>, IEEE/ACM international Symposium on Cluster, Cloud and Internet Computing (CCGrid). Philadelphia, May 2024 <cite><a href="SLM.pdf">[paper]</a> <a href="ccgrid24.bib">[bibtex]</a></cite>
+                </li>
+                <li>
+                    Roja Eswaran, Mingjie Yan, Kartik Gopalan <i><b>Incorporating Memory Sharing-Awareness in Multi-VM Live Migration</b></i>, IEEE/ACM international Symposium on Cluster, Cloud and Internet Computing (CCGrid). Philadelphia, May 2024 <cite><a href="DoctoralSymposium-CCGRID.pdf">[paper]</a> <a href="doc24.bib">[bibtex]</a></cite>
+                </li>
+                <li>
+                    Roja Eswaran <i><b>Sharing-Aware Live Migration of Virtual Machines</b></i>, Doctoral Dissertation <cite><a href="Doctoral.pdf">[paper]</a> <a href="doc.bib">[bibtex]</a></cite>
+                </li>
+                <li>
+                    Roja Eswaran <i><b>Reducing Hypervisor Overhead for Virutal Interrupt Delivery in KVM/ARM Platform</b></i>, Submitted as a part of Research Proposal Exam (RPE) conducted by Binghamton University on Fall'20 <cite><a href="RPE-3.pdf">[paper]</a></cite>
+                </li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>Opensource Contributions</h2>
+            <ol class="opensource">
+                <li>Proposed a patch which prevents race condition that arises due to applying and deleting kata-deploy.yaml multiple times <cite><a href="https://github.com/kata-containers/kata-containers/pull/10970">[commit1]</a></cite></li>
+                <li>Integrated new QEMU CPU-Pinning feature into EVE <cite><a href="https://github.com/lf-edge/eve/commit/d463c8e3498c244b4ef5c5d4cc223f039d80b4c8">[commit1]</a></cite></li>
+                <li>Reduced memory usage of Idle Kubvirt from 1.1G to 350MB <cite><a href="https://github.com/naiming-zededa/eve/commit/74b191949f7dbb5b1b7f5cb87330dd00d8029ab7">[commit1]</a> <a href="https://github.com/naiming-zededa/eve/commit/487dc8b48148cafc4c9e6c91485304adef327ec8">[commit2]</a></cite></li>
+                <li>Upgraded Xen-tool version to take from 4.18 to 4.19 for EVE to take advantage of QEMU version upgrade from 5.1 to 8.0.4 <cite><a href="https://github.com/lf-edge/eve/pull/4186">[commit]</a></cite></li>
+                <li>Optimized traditional memcpy by only copying the valid data instead of holes thereby reducing copy time by 10 times <cite><a href="https://github.com/Roja-Eswaran/memory-region-aware-copy">[repository]</a></cite></li>
+                <li>Accurate QEMU Timestamps to measure the total migration time and downtime for live migration <cite><a href="https://github.com/Roja-Eswaran/QEMU-KVM-timestamp">[repository]</a></cite></li>
+                <li>Measured memory allocation overhead introduced by QEMU <cite><a href="https://github.com/Roja-Eswaran/QEMU-overhead">[repository]</a></cite></li>
+                <li>Userfaultfd-Aware-Mmap to have fine-grained control over processes' memory regions <cite><a href="https://github.com/Roja-Eswaran/userfaultfd">[repository]</a></cite></li>
+                <li>Kernel-level Timer and Inter-processor interrupt latency tests to measure the physical and virtual interrupt latency <cite><a href="https://github.com/Roja-Eswaran/timer-interrupt-latency-test">[repository1]</a> <a href="https://github.com/Roja-Eswaran/ipi-latency-test">[repository2]</a></cite></li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>Medium Contributions</h2>
+            <ol class="Medium">
+                <li>Mounting NFS for sharing a resource <cite><a href="https://medium.com/@roja-eswaran/mounting-nfs-for-sharing-a-resource-4c545294da2">[Link]</a></cite></li>
+                <li>Enable Network for VM using tap device <cite><a href="https://medium.com/@roja-eswaran/enable-network-for-vm-using-tap-device-bee94fc3463a">[Link]</a></cite></li>
+                <li>Use QEMU/qmp to interact with guest VMs <cite><a href="https://medium.com/@roja-eswaran/use-qemu-qmp-to-interact-with-guest-vms-e3b8ad257818">[Link]</a></cite></li>
+                <li>How to create a VM using QEMU/KVM <cite><a href="https://medium.com/@roja-eswaran/how-to-create-vm-using-qemu-kvm-a2220043ba1e">[Link]</a></cite></li>
+            </ol>
+        </div>
+
     </div>
-		<h1>Roja Eswaran, PhD</h1>
-        <h3>Senior Engineer at GEICO</h3>
-        <a href="https://www.linkedin.com/in/roja-eswaran">[LinkedIn]</a>
-        <a href="https://github.com/RojaEswaran">[GitHub]</a>
-        <a href="
-        https://scholar.google.com/citations?user=R8hR8fcAAAAJ&hl=en&oi=ao">[Google Scholar]</a>
-		<a href ="https://medium.com/@roja-eswaran"> [Medium] </a>
-        <a href ="Resume_RojaEswaran.pdf"> [Resume] </a>
-        <a href ="CV-RojaEswaran.pdf"> [CV] </a> 
-    <div class="image-container-right">
-        <img src="bearcat.png" alt="Bear">
-    </div> 
-    </div>
-    
-
-   
-	  <h2> Technical Program Committee </h2>
-	  <ol class="reviewers">
-		  <li>
-              Internet of Things and Cloud Computing Journal <cite> <a href="http://www.iotccjournal.org/reviewers"> [Reviewer] </a>			 
-         </li>
-	  </ol>	
-	<h2> Publications/Technical Talks </h2> 
-        <ol class="publication">
-			<li>
-				Roja Eswaran <i><b> Three advantages: Why edge computing demands a different developer mindset</i></b>, In the All Things Open (ATO '25). Raleigh, North Carolina, October 12 2025 <cite> <a href="https://www.youtube.com/watch?v=BmVgG8KScGU"> [Podcast Reference] </a> </cite> <cite><a href="https://allthingsopen.org/articles/edge-computing-ai-systems-programming"> [Article] </a></cite>
-			</li>
-			<li>
-                Roja Eswaran <i><b> Performance vs Security Tradeoff in Containers</i></b>, In the All Things Open (ATO '25). Raleigh, North Carolina, October 13 2025 <cite> <a href="https://2025.allthingsopen.org/sessions/a-tug-of-war-performance-vs-security-tradeoff-in-containers"> [Talk Reference] </a><a href="https://2025.allthingsopen.org/speakers/roja-eswaran-phd"> [Conference] </a></cite>
-        </li>
-
-            <li>
-                Roja Eswaran, Mingjie Yan, Kartik Gopalan <i><b> Template-aware Live Migration of Virtual Machines</i></b>, In The Eighth ACM/IEEE Symposium on Edge Computing (SEC ’23) EdgeComm. Delaware, December 2023 <cite> <a href="TLM.pdf"> [paper] </a><a href="edgecomm23.bib"> [bibtex] </a></cite>
-        </li>
-            <li>
-                Roja Eswaran, Mingjie Yan, Kartik Gopalan <i><b> Tackling Memory Footprint Expansion During Live Migration of Virtual Machines</i></b>, IEEE/ACM international Symposium on Cluster, Cloud and Internet Computing (CCGrid). Philadelphia, May 2024 <cite> <a href="SLM.pdf"> [paper] </a> <a href="ccgrid24.bib"> [bibtex] </a></cite>
-        </li>
-            <li> Roja Eswaran, Mingjie Yan, Kartik Gopalan <i><b> Incorporating Memory Sharing-Awareness in Multi-VM Live Migration</i></b>, IEEE/ACM international Symposium on Cluster, Cloud and Internet Computing (CCGrid). Philadelphia, May 2024 <cite><a href="DoctoralSymposium-CCGRID.pdf"> [paper] </a> <a href="doc24.bib"> [bibtex] </a></cite>
-        </li>
-            <li> Roja Eswaran <i><b> Sharing-Aware Live Migration of Virtual Machines</i></b>, Doctoral Dissertation<cite><a href="Doctoral.pdf"> [paper] </a> <a href="doc.bib"> [bibtex] </a></cite>
-        </li>
-	<li>
-                 Roja Eswaran <i><b> Reducing Hypervisor Overhead for Virutal Interrupt Delivery in KVM/ARM Platform</i></b>, Submitted as a part of Research Proposal Exam (RPE) conducted by Binghamton University on Fall’20 <cite> <a href="RPE-3.pdf"> [paper] </a></cite>
-        </li>
-
-        </ol>
-    
-    <h2>Opensource Contributions</h2>
-    <ol class="opensource">
-	    <li> Proposed a patch which  prevents race condition that arises due to applying and deleting kata-deploy.yaml multiple times <cite><a href="https://github.com/kata-containers/kata-containers/pull/10970"> [commit1]</a></cite></li>
-	    <li>Integrated new QEMU CPU-Pinning feature into EVE <cite><a href="https://github.com/lf-edge/eve/commit/d463c8e3498c244b4ef5c5d4cc223f039d80b4c8"> [commit1]</a></cite></li>
-         <li>Reduced memory usage of Idle Kubvirt from 1.1G to 350MB <cite><a href="https://github.com/naiming-zededa/eve/commit/74b191949f7dbb5b1b7f5cb87330dd00d8029ab7"> [commit1], </a> <a href="https://github.com/naiming-zededa/eve/commit/487dc8b48148cafc4c9e6c91485304adef327ec8"> [commit2 ]</a></cite></li>
-        <li>Upgraded Xen-tool version to take from 4.18 to 4.19 for EVE to take advantage of QEMU version upgrade from 5.1 to 8.0.4 <cite><a href="https://github.com/lf-edge/eve/pull/4186"> [commit] </a></cite></li>
-        <li>Optimized traditional memcpy by only copying the valid data instead of holes thereby reducing copy time by 10 times <cite><a href="https://github.com/Roja-Eswaran/memory-region-aware-copy"> [repository] </a></cite></li>
-        <li>Accurate QEMU Timestamps to measure the total migration time and downtime for live migration <cite><a href="https://github.com/Roja-Eswaran/QEMU-KVM-timestamp"> [repository] </a></cite></li>
-        <li>Measured memory allocation overhead introduced by QEMU <cite><a href="https://github.com/Roja-Eswaran/QEMU-overhead"> [repository] </a> </cite></li>  
-        <li>Userfaultfd-Aware-Mmap to have fine-grained control over processes’ memory regions <cite><a href="https://github.com/Roja-Eswaran/userfaultfd"> [repository] </a> </cite></li>
-        <li>Kernel-level Timer and Inter-processor interrupt latency tests to measure the physical and virtual interrupt latency<cite><a href="https://github.com/Roja-Eswaran/timer-interrupt-latency-test"> [repository1], </a> <a href="https://github.com/Roja-Eswaran/ipi-latency-test"> [repository2] </a></cite></li>
-    </ol>
-	 <h2>Medium Contributions</h2>
-    <ol class="Medium">
-	<li> Mounting NFS for sharing a resource <cite><a href="https://medium.com/@roja-eswaran/mounting-nfs-for-sharing-a-resource-4c545294da2"> [Link] </a> </cite></li>
-	<li> Enable Network for VM using tap device <cite><a href="https://medium.com/@roja-eswaran/enable-network-for-vm-using-tap-device-bee94fc3463a"> [Link] </a> </cite></li>
-	<li> Use QEMU/qmp to interact with guest VMs <cite><a href="https://medium.com/@roja-eswaran/use-qemu-qmp-to-interact-with-guest-vms-e3b8ad257818"> [Link] </a> </cite></li>
-	<li> How to create a VM using QEMU/KVM <cite><a href="https://medium.com/@roja-eswaran/how-to-create-vm-using-qemu-kvm-a2220043ba1e"> [Link] </a> </cite></li>
-	</ol>
-</h2>
-</h2>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
