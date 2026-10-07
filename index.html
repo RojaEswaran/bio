@@ -243,6 +243,54 @@
             margin-left: 4px;
         }
 
+        /* Badges */
+        .group-with-badge {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .group-with-badge ol { flex: 1; }
+
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 132px;
+            flex-shrink: 0;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 10px;
+            color: var(--ink);
+            text-align: center;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .badge:hover {
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge img {
+            width: 84px;
+            height: 84px;
+            object-fit: contain;
+        }
+
+        .badge-name {
+            font-weight: 600;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .badge-meta {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
         @media (max-width: 640px) {
             body { padding: 24px 14px 40px; }
             .card { padding: 22px 20px; }
@@ -250,6 +298,7 @@
             .logo-row { justify-content: center; }
             .logo-chip { padding: 10px 16px; }
             .logo-chip img { height: 28px; }
+            .group-with-badge { flex-direction: column; align-items: center; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -287,11 +336,45 @@
         </div>
 
         <div class="card">
-            <h2>Technical Program Committee</h2>
-            <ol class="reviewers">
-                <li>
-                    Internet of Things and Cloud Computing Journal <cite><a href="http://www.iotccjournal.org/reviewers">[Reviewer]</a></cite>
-                </li>
+            <h2>Opensource Contributions</h2>
+
+            <h4 class="group-heading">OpenStack / diskimage-builder</h4>
+            <div class="group-with-badge">
+                <ol class="opensource">
+                    <li>Added DIB_MMDEBSTRAP_EXTRA_ARGS support to allow mmdebstrap to be used with custom arguments while preserving debootstrap compatibility <cite><a href="https://github.com/openstack/diskimage-builder/commit/b6dbb2c1a0cb40b45e51179d24402fceab13f1a8">[commit]</a></cite></li>
+                    <li>Replaced debootstrap with mmdebstrap for improved build performance <cite><a href="https://github.com/openstack/diskimage-builder/commit/b36ef06769989ef64756e5668fb86f62e5875783">[commit]</a></cite></li>
+                    <li>Co-authored a fix to disable the broken centos/10-stream-build-succeeds functional test caused by an empty upstream image hash file <cite><a href="https://github.com/openstack/diskimage-builder/commit/0f5fb489179caf959397007f95c83affc2797710">[commit]</a></cite></li>
+                </ol>
+                <a class="badge" href="https://www.credly.com/badges/83bdfaa0-cae2-42f7-b02f-8749d0a16043">
+                    <img src="openstack-hibiscus-badge.png" alt="Contributor: OpenStack Hibiscus 2026.2 badge">
+                    <div class="badge-name">Contributor: OpenStack Hibiscus 2026.2</div>
+                    <div class="badge-meta">The Linux Foundation · Sep 2026</div>
+                </a>
+            </div>
+
+            <h4 class="group-heading">Kata Containers</h4>
+            <ol class="opensource">
+                <li>Proposed a patch which prevents race condition that arises due to applying and deleting kata-deploy.yaml multiple times <cite><a href="https://github.com/kata-containers/kata-containers/pull/10970">[commit]</a></cite></li>
+            </ol>
+
+            <h4 class="group-heading">LF Edge / EVE</h4>
+            <ol class="opensource">
+                <li>Integrated new QEMU CPU-Pinning feature into EVE <cite><a href="https://github.com/lf-edge/eve/commit/d463c8e3498c244b4ef5c5d4cc223f039d80b4c8">[commit]</a></cite></li>
+                <li>Reduced memory usage of Idle Kubvirt from 1.1G to 350MB <cite><a href="https://github.com/naiming-zededa/eve/commit/74b191949f7dbb5b1b7f5cb87330dd00d8029ab7">[commit1]</a> <a href="https://github.com/naiming-zededa/eve/commit/487dc8b48148cafc4c9e6c91485304adef327ec8">[commit2]</a></cite></li>
+                <li>Upgraded Xen-tool version to take from 4.18 to 4.19 for EVE to take advantage of QEMU version upgrade from 5.1 to 8.0.4 <cite><a href="https://github.com/lf-edge/eve/pull/4186">[commit]</a></cite></li>
+            </ol>
+
+            <h4 class="group-heading">Live Migration Performance Tooling</h4>
+            <ol class="opensource">
+                <li>Optimized traditional memcpy by only copying the valid data instead of holes thereby reducing copy time by 10 times <cite><a href="https://github.com/Roja-Eswaran/memory-region-aware-copy">[repository]</a></cite></li>
+                <li>Accurate QEMU Timestamps to measure the total migration time and downtime for live migration <cite><a href="https://github.com/Roja-Eswaran/QEMU-KVM-timestamp">[repository]</a></cite></li>
+                <li>Measured memory allocation overhead introduced by QEMU <cite><a href="https://github.com/Roja-Eswaran/QEMU-overhead">[repository]</a></cite></li>
+            </ol>
+
+            <h4 class="group-heading">Interrupt &amp; Latency Research</h4>
+            <ol class="opensource">
+                <li>Userfaultfd-Aware-Mmap to have fine-grained control over processes' memory regions <cite><a href="https://github.com/Roja-Eswaran/userfaultfd">[repository]</a></cite></li>
+                <li>Kernel-level Timer and Inter-processor interrupt latency tests to measure the physical and virtual interrupt latency <cite><a href="https://github.com/Roja-Eswaran/timer-interrupt-latency-test">[repository1]</a> <a href="https://github.com/Roja-Eswaran/ipi-latency-test">[repository2]</a></cite></li>
             </ol>
         </div>
 
@@ -323,38 +406,11 @@
         </div>
 
         <div class="card">
-            <h2>Opensource Contributions</h2>
-
-            <h4 class="group-heading">Kata Containers</h4>
-            <ol class="opensource">
-                <li>Proposed a patch which prevents race condition that arises due to applying and deleting kata-deploy.yaml multiple times <cite><a href="https://github.com/kata-containers/kata-containers/pull/10970">[commit]</a></cite></li>
-            </ol>
-
-            <h4 class="group-heading">OpenStack / diskimage-builder</h4>
-            <ol class="opensource">
-                <li>Added DIB_MMDEBSTRAP_EXTRA_ARGS support to allow mmdebstrap to be used with custom arguments while preserving debootstrap compatibility <cite><a href="https://github.com/openstack/diskimage-builder/commit/b6dbb2c1a0cb40b45e51179d24402fceab13f1a8">[commit]</a></cite></li>
-                <li>Replaced debootstrap with mmdebstrap for improved build performance <cite><a href="https://github.com/openstack/diskimage-builder/commit/b36ef06769989ef64756e5668fb86f62e5875783">[commit]</a></cite></li>
-                <li>Co-authored a fix to disable the broken centos/10-stream-build-succeeds functional test caused by an empty upstream image hash file <cite><a href="https://github.com/openstack/diskimage-builder/commit/0f5fb489179caf959397007f95c83affc2797710">[commit]</a></cite></li>
-            </ol>
-
-            <h4 class="group-heading">LF Edge / EVE</h4>
-            <ol class="opensource">
-                <li>Integrated new QEMU CPU-Pinning feature into EVE <cite><a href="https://github.com/lf-edge/eve/commit/d463c8e3498c244b4ef5c5d4cc223f039d80b4c8">[commit]</a></cite></li>
-                <li>Reduced memory usage of Idle Kubvirt from 1.1G to 350MB <cite><a href="https://github.com/naiming-zededa/eve/commit/74b191949f7dbb5b1b7f5cb87330dd00d8029ab7">[commit1]</a> <a href="https://github.com/naiming-zededa/eve/commit/487dc8b48148cafc4c9e6c91485304adef327ec8">[commit2]</a></cite></li>
-                <li>Upgraded Xen-tool version to take from 4.18 to 4.19 for EVE to take advantage of QEMU version upgrade from 5.1 to 8.0.4 <cite><a href="https://github.com/lf-edge/eve/pull/4186">[commit]</a></cite></li>
-            </ol>
-
-            <h4 class="group-heading">Live Migration Performance Tooling</h4>
-            <ol class="opensource">
-                <li>Optimized traditional memcpy by only copying the valid data instead of holes thereby reducing copy time by 10 times <cite><a href="https://github.com/Roja-Eswaran/memory-region-aware-copy">[repository]</a></cite></li>
-                <li>Accurate QEMU Timestamps to measure the total migration time and downtime for live migration <cite><a href="https://github.com/Roja-Eswaran/QEMU-KVM-timestamp">[repository]</a></cite></li>
-                <li>Measured memory allocation overhead introduced by QEMU <cite><a href="https://github.com/Roja-Eswaran/QEMU-overhead">[repository]</a></cite></li>
-            </ol>
-
-            <h4 class="group-heading">Interrupt &amp; Latency Research</h4>
-            <ol class="opensource">
-                <li>Userfaultfd-Aware-Mmap to have fine-grained control over processes' memory regions <cite><a href="https://github.com/Roja-Eswaran/userfaultfd">[repository]</a></cite></li>
-                <li>Kernel-level Timer and Inter-processor interrupt latency tests to measure the physical and virtual interrupt latency <cite><a href="https://github.com/Roja-Eswaran/timer-interrupt-latency-test">[repository1]</a> <a href="https://github.com/Roja-Eswaran/ipi-latency-test">[repository2]</a></cite></li>
+            <h2>Technical Program Committee</h2>
+            <ol class="reviewers">
+                <li>
+                    Internet of Things and Cloud Computing Journal <cite><a href="http://www.iotccjournal.org/reviewers">[Reviewer]</a></cite>
+                </li>
             </ol>
         </div>
 
